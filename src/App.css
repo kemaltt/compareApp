@@ -85,8 +85,10 @@ td {
 }
 
 
-main {
+.main {
   text-align: center;
+  padding-bottom: 10vh;
+
 }
 
 .product_detail {
