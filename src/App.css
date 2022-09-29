@@ -153,6 +153,13 @@ main {
   margin: 2vh auto;
 }
 
+.footer_container {
+  text-align: center;
+  background-color: orange;
+  color: white;
+  padding: 2vh 0;
+}
+
 @media only screen and (max-width: 600px) {
 
 
