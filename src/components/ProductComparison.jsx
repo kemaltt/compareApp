@@ -23,8 +23,8 @@ export default function ProductComparison({ data }) {
         setProducts={setProducts}
         setMessage={setMessage}
       />
-      <p style={{ color: 'red', textAlign: 'center' }}> {message}</p>
-      <h1 style={{ color: 'green', textAlign: 'center' }}>Compare Items</h1>
+      <p style={{ textAlign: 'center' }}> {message}</p>
+      <h1 style={{ color: 'green', textAlign: 'center' }}>Compare List</h1>
       {selectedItems.length > 0 ? (
         <div className="compare_container">
           <div style={{ width: '20%', textAlign: 'left' }}>

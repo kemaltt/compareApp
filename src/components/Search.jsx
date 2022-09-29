@@ -13,10 +13,16 @@ export default function Search({ products, setProducts, setMessage }) {
       )
 
       if (search.length === 0) {
-        setMessage('No matching information')
+        setMessage(
+          <span style={{ color: 'red' }}>No matching information</span>,
+        )
       } else {
         setProducts(search)
-        setMessage(`There are ${search.length} matches `)
+        setMessage(
+          <span style={{ color: 'yellowgreen' }}>
+            There are {search.length} matches
+          </span>,
+        )
       }
     }
     setInput('')
