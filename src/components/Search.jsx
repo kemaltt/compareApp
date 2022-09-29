@@ -12,7 +12,7 @@ export default function Search({ products, setProducts, setMessage }) {
         (el) => el.name.toLowerCase().indexOf(input.toLowerCase()) !== -1,
       )
 
-      if (search.length == 0) {
+      if (search.length === 0) {
         setMessage('No matching information')
       } else {
         setProducts(search)

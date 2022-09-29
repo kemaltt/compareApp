@@ -76,19 +76,7 @@ export default function ProductCard({
         </button>
       </div>
       {toggle ? (
-        <div
-          style={{
-            position: 'absolute',
-            top: '25%',
-            left: '33%',
-            backgroundColor: 'white',
-            border: '1px solid black',
-            padding: '20px',
-            width: '30%',
-            borderRadius: '25px',
-            textAlign: 'center',
-          }}
-        >
+        <div className="popup_container">
           <img
             style={{ width: '50%' }}
             src={product.image}

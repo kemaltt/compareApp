@@ -1,13 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 // import css from '../css/ProductDetail.css'
 
 export default function ProductDetail({ data }) {
   const { id } = useParams()
   console.log(id)
-  const filteredProduct = data.filter((el) => el.id == id)
-  console.log(filteredProduct)
+  const filteredProduct = data.filter((el) => el.id === id)
+  // console.log(filteredProduct)
   const product = filteredProduct[0]
 
   return (

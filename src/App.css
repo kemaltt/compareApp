@@ -24,6 +24,14 @@ p {
   font-size: 2rem;
 }
 
+th {
+  font-size: 1.8rem;
+}
+
+td {
+  font-size: 1.8rem;
+}
+
 
 .navbar nav {
   display: flex;
@@ -108,6 +116,18 @@ main {
   padding: 5px;
 }
 
+.popup_container {
+  position: absolute;
+  top: 30%;
+  left: 33%;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 20px;
+  width: 33%;
+  border-radius: 25px;
+  text-align: center;
+}
+
 .search_container form {
   width: 50%;
   margin: 4vh auto;
@@ -174,6 +194,16 @@ main {
   .search_container form {
     width: 70%;
     margin: 4vh auto;
+
+  }
+
+  .search_container form button {
+    width: 20%;
+    height: 30px;
+    border: none;
+    background-color: blue;
+    color: white;
+
   }
 
   .product_card {
@@ -188,6 +218,10 @@ main {
     margin: 2vh auto;
   }
 
+  .product_detail {
+    width: 90%;
+  }
+
   h3 {
     font-size: 1.5rem;
   }
@@ -198,6 +232,15 @@ main {
 
   td {
     font-size: 1.3rem;
+  }
+
+  .popup_container {
+
+    top: 40%;
+    left: 10%;
+
+    width: 80%;
+
   }
 
 
