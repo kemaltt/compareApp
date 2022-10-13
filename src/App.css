@@ -82,6 +82,7 @@ td {
 
 .mobile_navlist {
   display: none;
+  transition: all 0.4s linear;
 }
 
 
@@ -175,14 +176,15 @@ td {
 
   .mobile_navlist {
     display: block;
-
+    transition: all 0.4s linear;
   }
+
 
 
   .nav_item_mobile {
     list-style: none;
     padding: 1vh 3%;
-    background: rgba(143, 138, 138, 0.473);
+    background: rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid white;
 
 
@@ -190,6 +192,7 @@ td {
 
   .nav_item_mobile li {
     border-bottom: 1px solid white;
+
   }
 
   .nav_item_mobile a {
@@ -197,8 +200,10 @@ td {
     color: white;
     font-size: 2rem;
     font-weight: bold;
+    transition: all 0.4s linear;
 
   }
+
 
   .search_container form {
     width: 70%;
