@@ -15,14 +15,14 @@ function App() {
 
 
   console.log(process.env.REACT_APP_API_KEY);
-  const { loginWithRedirect, isAuthenticated, logout, isLoading } = useAuth0()
+  const { loginWithRedirect, isAuthenticated, logout, isLoading, user } = useAuth0()
 
 
 
   return (
     <div className="App" >
       <BrowserRouter>
-        <Navbar isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} />
+        <Navbar isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} />
         <Routes>
           <Route path='/' element={<ProductComparison data={data} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
           <Route path='/contact' element={<Contact />} />

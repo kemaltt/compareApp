@@ -1,8 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { MdLogout } from 'react-icons/md'
 
-export default function Navbar({ loginWithRedirect, logout, isAuthenticated }) {
+export default function Navbar({
+  loginWithRedirect,
+  logout,
+  isAuthenticated,
+  user,
+}) {
+  console.log(user)
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
 
@@ -26,11 +33,17 @@ export default function Navbar({ loginWithRedirect, logout, isAuthenticated }) {
             <Link to="/contact">Contact</Link>
           </li>
           {isAuthenticated ? (
-            <li>
-              <Link onClick={logout} to="">
-                Log Out
-              </Link>
-            </li>
+            <>
+              <li style={{ marginLeft: '4rem' }}>
+                <Link>{user.name} </Link>
+              </li>
+
+              <li className="logout">
+                <Link onClick={logout} to="">
+                  <MdLogout style={{ fontSize: '2rem' }} />
+                </Link>
+              </li>
+            </>
           ) : (
             <li>
               <Link onClick={loginWithRedirect} to="">
@@ -59,7 +72,7 @@ export default function Navbar({ loginWithRedirect, logout, isAuthenticated }) {
             {isAuthenticated ? (
               <li>
                 <Link onClick={logout} to="">
-                  Log Out
+                  <MdLogout style={{ fontSize: '2.5rem' }} /> {user.name}
                 </Link>
               </li>
             ) : (

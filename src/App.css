@@ -53,6 +53,7 @@ td {
   list-style: none;
   display: flex;
   justify-content: space-around;
+  margin: 0;
 
 }
 
@@ -61,7 +62,7 @@ td {
   padding: 5px;
   color: white;
   font-size: 1.5rem;
-
+  transition: all 0.3s;
 
 }
 
@@ -73,8 +74,9 @@ td {
 
 
 .navbar_ nav ul a:hover {
+  transition: all 0.3s;
   border-bottom: 1px solid white;
-  background-color: gray;
+  /* background-color: gray; */
   border-radius: 10px;
 }
 
@@ -90,7 +92,12 @@ td {
   font-size: 3rem;
 }
 
-
+/* 
+.logout {
+  border: solid 1px #fff;
+  border-radius: 5px;
+  font-weight: bold;
+} */
 
 .mobile_navlist {
   display: none;
