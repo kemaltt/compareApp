@@ -1,9 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import Loading from './Loading'
 import ProductCard from './ProductCard'
 import Search from './Search'
 
-export default function ProductComparison({ data }) {
+export default function ProductComparison({
+  data,
+  isAuthenticated,
+  isLoading,
+}) {
   const [selectedItems, setSelectedItems] = useState([])
   const [products, setProducts] = useState(data)
   const [message, setMessage] = useState('')
@@ -16,12 +21,15 @@ export default function ProductComparison({ data }) {
     setSelectedItems([...selectedItems.filter((el) => el.id !== product.id)])
   }
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="main">
       <Search
         products={products}
         setProducts={setProducts}
         setMessage={setMessage}
+        isAuthenticated={isAuthenticated}
       />
       <p style={{ textAlign: 'center' }}> {message}</p>
       <h1 style={{ color: 'green', textAlign: 'center' }}>Compare List</h1>
@@ -80,6 +88,7 @@ export default function ProductComparison({ data }) {
             selected={selectedItems}
             addToCompare={addToCompare}
             removeToCompare={removeToCompare}
+            isAuthenticated={isAuthenticated}
           />
         ))}
       </div>

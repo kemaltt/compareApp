@@ -33,25 +33,30 @@ td {
 }
 
 
-.navbar nav {
+/* .App {
+  height: 100vh;
+} */
+
+.navbar_ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2vh 3%;
   background-color: orange;
   color: white;
+
 }
 
 
-.navbar nav .nav_item_desktop {
+.navbar_ nav .nav_item_desktop {
   display: block;
   list-style: none;
   display: flex;
   justify-content: space-around;
-  width: 250px;
+
 }
 
-.navbar nav ul a {
+.navbar_ nav ul a {
   text-decoration: none;
   padding: 5px;
   color: white;
@@ -60,13 +65,20 @@ td {
 
 }
 
-.navbar nav ul a:hover {
+/* .navbar nav ul a:active {
+  border-bottom: 1px solid white;
+  background-color: gray;
+  border-radius: 10px;
+} */
+
+
+.navbar_ nav ul a:hover {
   border-bottom: 1px solid white;
   background-color: gray;
   border-radius: 10px;
 }
 
-.navbar nav .burger_menü {
+.navbar_ nav .burger_menü {
   display: none;
   border: 2px solid white;
   text-align: center;
@@ -74,7 +86,7 @@ td {
   border-radius: 5px;
 }
 
-.navbar nav .burger_menü i {
+.navbar_ nav .burger_menü i {
   font-size: 3rem;
 }
 
@@ -140,6 +152,9 @@ td {
   width: 80%;
   height: 30px;
   padding: 5px;
+  border: none;
+  border: solid 1px gray;
+  border-radius: 10px 0 0 10px;
 }
 
 .search_container form button {
@@ -148,6 +163,7 @@ td {
   border: none;
   background-color: blue;
   color: white;
+  border-radius: 0 10px 10px 0;
 }
 
 .compare_container {
@@ -163,14 +179,23 @@ td {
   padding: 2vh 0;
 }
 
+.register_container {
+  text-align: center;
+}
+
+.spinner-grow {
+  width: 5rem;
+  height: 5rem;
+}
+
 @media only screen and (max-width: 600px) {
 
 
-  .navbar nav .nav_item_desktop {
+  .navbar_ nav .nav_item_desktop {
     display: none;
   }
 
-  .navbar nav .burger_menü {
+  .navbar_ nav .burger_menü {
     display: block;
   }
 

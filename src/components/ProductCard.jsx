@@ -9,6 +9,7 @@ export default function ProductCard({
   selected,
   addToCompare,
   removeToCompare,
+  isAuthenticated,
 }) {
   const [toggle, setToggle] = useState(false)
   const navigate = useNavigate()
@@ -39,7 +40,11 @@ export default function ProductCard({
               width: '100px',
               margin: '4px',
             }}
-            onClick={() => removeToCompare(product)}
+            onClick={() =>
+              !isAuthenticated
+                ? alert('please log in before continuing')
+                : removeToCompare(product)
+            }
           >
             Remove
           </button>
@@ -54,13 +59,23 @@ export default function ProductCard({
               width: '100px',
               margin: '4px',
             }}
-            onClick={() => addToCompare(product)}
+            onClick={() =>
+              !isAuthenticated
+                ? alert('please log in before continuing')
+                : addToCompare(product)
+            }
           >
             Compare
           </button>
         )}
         <button
-          onClick={() => navigate(`/productdetail/${id}`)}
+          onClick={() =>
+            navigate(
+              isAuthenticated
+                ? `/productdetail/${id}`
+                : alert('please log in before continuing'),
+            )
+          }
           style={{
             backgroundColor: 'orange',
             border: 'none',

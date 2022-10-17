@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({ loginWithRedirect, logout, isAuthenticated }) {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
 
@@ -10,8 +10,8 @@ export default function Navbar() {
     setToggle(!toggle)
   }
   return (
-    <div className="navbar">
-      <nav>
+    <div className="navbar_">
+      <nav style={{ background: isAuthenticated ? 'tomato' : 'orange' }}>
         <h2 style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
           Compare App
         </h2>
@@ -25,6 +25,19 @@ export default function Navbar() {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+          {isAuthenticated ? (
+            <li>
+              <Link onClick={logout} to="">
+                Log Out
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link onClick={loginWithRedirect} to="">
+                Sign Up
+              </Link>
+            </li>
+          )}
         </ul>
 
         <div onClick={handleNavList} className="burger_menü">
@@ -43,6 +56,19 @@ export default function Navbar() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            {isAuthenticated ? (
+              <li>
+                <Link onClick={logout} to="">
+                  Log Out
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link onClick={loginWithRedirect} to="">
+                  Sign Up
+                </Link>
+              </li>
+            )}
           </ul>
         ) : null}
       </div>

@@ -1,28 +1,37 @@
 import React from 'react'
 import { useState } from 'react'
 
-export default function Search({ products, setProducts, setMessage }) {
+export default function Search({
+  products,
+  setProducts,
+  setMessage,
+  isAuthenticated,
+}) {
   const [input, setInput] = useState('')
   const getProduct = (e) => {
     e.preventDefault()
-    if (!input) {
-      alert('enter a product')
+    if (!isAuthenticated) {
+      alert('please log in before continuing')
     } else {
-      const search = products.filter(
-        (el) => el.name.toLowerCase().indexOf(input.toLowerCase()) !== -1,
-      )
-
-      if (search.length === 0) {
-        setMessage(
-          <span style={{ color: 'red' }}>No matching information</span>,
-        )
+      if (!input) {
+        alert('enter a product')
       } else {
-        setProducts(search)
-        setMessage(
-          <span style={{ color: 'yellowgreen' }}>
-            There are {search.length} matches
-          </span>,
+        const search = products.filter(
+          (el) => el.name.toLowerCase().indexOf(input.toLowerCase()) !== -1,
         )
+
+        if (search.length === 0) {
+          setMessage(
+            <span style={{ color: 'red' }}>No matching information</span>,
+          )
+        } else {
+          setProducts(search)
+          setMessage(
+            <span style={{ color: 'yellowgreen' }}>
+              There are {search.length} matches
+            </span>,
+          )
+        }
       }
     }
     setInput('')
