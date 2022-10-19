@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 export default function ProductDetail({ data }) {
   const { id } = useParams()
   console.log(id)
-  const filteredProduct = data.filter((el) => el.product_id == id)
+  const filteredProduct = data.filter((el) => el.product_id === Number(id))
   console.log(filteredProduct[0])
   const product = filteredProduct[0]
 
