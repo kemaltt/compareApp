@@ -20,15 +20,10 @@ export default function ProductCard({
 
   return (
     <div key={i} className="product_card">
-      <img
-        onClick={productDetail}
-        style={{ width: '50%' }}
-        src={product.image}
-        alt={product.name}
-      />
-      <div style={{ width: '50%' }} className="product_body">
-        <h3>{product.name} </h3>
-        <p>{product.price}</p>
+      <img onClick={productDetail} src={product.image} alt={product.title} />
+      <div className="product_body">
+        <h3>{product.title} </h3>
+        <p>${product.price}</p>
         {selected && selected.includes(product) ? (
           <button
             style={{
@@ -112,7 +107,7 @@ export default function ProductCard({
               <i
                 style={{
                   fontSize: '1.5rem',
-                  color: product.rating >= i + 1 ? 'orange' : 'grey',
+                  color: product.rating.rate >= i + 1 ? 'orange' : 'grey',
                 }}
                 class="las la-star"
               ></i>

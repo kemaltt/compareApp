@@ -4,7 +4,7 @@ import ProductComparison from './components/ProductComparison';
 import data from './products'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
-import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 import AboutUs from './pages/AboutUs';
 import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
@@ -25,7 +25,7 @@ function App() {
         <Navbar isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} />
         <Routes>
           <Route path='/' element={<ProductComparison data={data} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
-          <Route path='/contact' element={<Contact />} />
+          <Route path='/cart' element={<Cart />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/productdetail/:id' element={<ProductDetail data={data} />} />
         </Routes>

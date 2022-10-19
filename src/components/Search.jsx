@@ -9,6 +9,7 @@ export default function Search({
 }) {
   const [input, setInput] = useState('')
   const getProduct = (e) => {
+    setInput(e.target.value)
     e.preventDefault()
     if (!isAuthenticated) {
       alert('please log in before continuing')
@@ -17,7 +18,8 @@ export default function Search({
         alert('enter a product')
       } else {
         const search = products.filter(
-          (el) => el.name.toLowerCase().indexOf(input.toLowerCase()) !== -1,
+          // (el) => el.name.toLowerCase().indexOf(input.toLowerCase()) !== -1,
+          (el) => el.title.toLowerCase().includes(input.toLowerCase()),
         )
 
         if (search.length === 0) {

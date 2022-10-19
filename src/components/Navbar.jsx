@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdLogout } from 'react-icons/md'
+import { MdLogin } from 'react-icons/md'
+import { BsCartPlus } from 'react-icons/bs'
+import Badge from 'react-bootstrap/Badge'
 
 export default function Navbar({
   loginWithRedirect,
@@ -18,10 +21,12 @@ export default function Navbar({
   }
   return (
     <div className="navbar_">
-      <nav style={{ background: isAuthenticated ? 'tomato' : 'orange' }}>
-        <h2 style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-          Compare App
-        </h2>
+      <nav>
+        <img
+          onClick={() => navigate('/')}
+          src="https://pbs.twimg.com/media/Ddna4X7UQAEQeBr.jpg:large"
+          alt="logo"
+        />
         <ul className="nav_item_desktop">
           <li>
             <Link to="/">Home</Link>
@@ -30,7 +35,15 @@ export default function Navbar({
             <Link to="/aboutus">About Us</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/cart">
+              <BsCartPlus style={{ fontSize: '3rem' }} />
+              {isAuthenticated ? (
+                <>
+                  <Badge bg="warning">2</Badge>
+                  <span className="visually-hidden">unread messages</span>
+                </>
+              ) : null}
+            </Link>
           </li>
           {isAuthenticated ? (
             <>
@@ -40,14 +53,15 @@ export default function Navbar({
 
               <li className="logout">
                 <Link onClick={logout} to="">
-                  <MdLogout style={{ fontSize: '2rem' }} />
+                  <MdLogout style={{ fontSize: '3rem' }} />
                 </Link>
               </li>
             </>
           ) : (
-            <li>
+            <li style={{ marginLeft: '1rem' }}>
               <Link onClick={loginWithRedirect} to="">
                 Sign Up
+                <MdLogin style={{ fontSize: '3rem' }} />
               </Link>
             </li>
           )}
@@ -67,7 +81,11 @@ export default function Navbar({
               <Link to="/aboutus">About Us</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/cart">
+                <BsCartPlus style={{ fontSize: '3rem' }} />
+                <Badge bg="warning">2</Badge>
+                <span className="visually-hidden">unread messages</span>
+              </Link>
             </li>
             {isAuthenticated ? (
               <li>

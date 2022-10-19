@@ -18,7 +18,9 @@ export default function ProductComparison({
     setSelectedItems([...selectedItems, product])
   }
   const removeToCompare = (product) => {
-    setSelectedItems([...selectedItems.filter((el) => el.id !== product.id)])
+    setSelectedItems([
+      ...selectedItems.filter((el) => el.product_id !== product.product_id),
+    ])
   }
 
   return isLoading ? (
@@ -38,8 +40,8 @@ export default function ProductComparison({
           <div style={{ width: '20%', textAlign: 'left' }}>
             <h3>Title </h3>
             <h3>Price </h3>
-            <h3>Description </h3>
-            <h3>Condition </h3>
+            <h3>Category </h3>
+            <h3>Rating </h3>
           </div>
           <div
             style={{
@@ -53,16 +55,27 @@ export default function ProductComparison({
             {selectedItems.map((el, i) => (
               <table key={i}>
                 <tr>
-                  <th>{el.name}</th>
+                  <th>{el.title}</th>
                 </tr>
                 <tr>
                   <td>{el.price}</td>
                 </tr>
                 <tr>
-                  <td>{el.description}</td>
+                  <td>{el.category}</td>
                 </tr>
                 <tr>
-                  <td>{el.condition}</td>
+                  <td>
+                    {' '}
+                    {[...Array(5)].map((star, i) => (
+                      <i
+                        style={{
+                          fontSize: '1.5rem',
+                          color: el.rating.rate >= i + 1 ? 'orange' : 'grey',
+                        }}
+                        class="las la-star"
+                      ></i>
+                    ))}
+                  </td>
                 </tr>
               </table>
             ))}
@@ -83,7 +96,7 @@ export default function ProductComparison({
         {products.map((product, i) => (
           <ProductCard
             product={product}
-            id={product.id}
+            id={product.product_id}
             i={i}
             selected={selectedItems}
             addToCompare={addToCompare}
