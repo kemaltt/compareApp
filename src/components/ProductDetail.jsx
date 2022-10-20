@@ -12,9 +12,19 @@ export default function ProductDetail({ data }) {
   return (
     <div className="product_detail">
       <img src={product.image} alt="" />
-      <h2>{product.title}</h2>
+      <h2 style={{ textDecoration: 'underline' }}>{product.title}</h2>
       <p>{product.category} </p>
       <p>${product.price} </p>
+      <p
+        style={{
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          color: 'grey',
+          textDecoration: 'underline',
+        }}
+      >
+        Description
+      </p>
       <p>{product.description} </p>
       {/* <p>
         colors :
@@ -24,6 +34,16 @@ export default function ProductDetail({ data }) {
           </span>
         ))}
       </p> */}
+      <p
+        style={{
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          color: 'grey',
+          textDecoration: 'underline',
+        }}
+      >
+        Rating
+      </p>
       <div
         style={{
           display: 'flex',

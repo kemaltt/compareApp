@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdLogout } from 'react-icons/md'
 import { MdLogin } from 'react-icons/md'
-import { BsCartPlus } from 'react-icons/bs'
+import { BsCartCheck } from 'react-icons/bs'
 import Badge from 'react-bootstrap/Badge'
 
 export default function Navbar({
@@ -11,11 +11,12 @@ export default function Navbar({
   logout,
   isAuthenticated,
   user,
+  selectedProducts,
 }) {
-  console.log(user)
+  const badge = selectedProducts.length
+  console.log(badge)
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
-
   const handleNavList = () => {
     setToggle(!toggle)
   }
@@ -34,19 +35,20 @@ export default function Navbar({
           <li>
             <Link to="/aboutus">About Us</Link>
           </li>
-          <li>
-            <Link to="/cart">
-              <BsCartPlus style={{ fontSize: '3rem' }} />
-              {isAuthenticated ? (
-                <>
-                  <Badge bg="warning">2</Badge>
-                  <span className="visually-hidden">unread messages</span>
-                </>
-              ) : null}
-            </Link>
-          </li>
+
           {isAuthenticated ? (
             <>
+              <li>
+                <Link to="/cart">
+                  <BsCartCheck style={{ fontSize: '3rem' }} />
+                  {isAuthenticated ? (
+                    <>
+                      <Badge bg="warning"> {badge} </Badge>
+                      <span className="visually-hidden">unread messages</span>
+                    </>
+                  ) : null}
+                </Link>
+              </li>
               <li style={{ marginLeft: '4rem' }}>
                 <Link>{user.name} </Link>
               </li>
@@ -82,8 +84,8 @@ export default function Navbar({
             </li>
             <li>
               <Link to="/cart">
-                <BsCartPlus style={{ fontSize: '3rem' }} />
-                <Badge bg="warning">2</Badge>
+                <BsCartCheck style={{ fontSize: '3rem' }} />
+                <Badge bg="warning">{badge}</Badge>
                 <span className="visually-hidden">unread messages</span>
               </Link>
             </li>

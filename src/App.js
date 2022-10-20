@@ -9,23 +9,29 @@ import AboutUs from './pages/AboutUs';
 import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
 import { useAuth0 } from '@auth0/auth0-react'
+import { useState } from 'react';
 
 
 function App() {
+  const [selectedProducts, setSelectedProducts] = useState([])
 
 
-  console.log(process.env.REACT_APP_API_KEY);
   const { loginWithRedirect, isAuthenticated, logout, isLoading, user } = useAuth0()
+  const addToCart = (product) => {
+    product.count = 1
+    setSelectedProducts([...selectedProducts, product])
 
 
+  }
 
+  console.log(selectedProducts);
   return (
     <div className="App" >
       <BrowserRouter>
-        <Navbar isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} />
+        <Navbar selectedProducts={selectedProducts} isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} />
         <Routes>
-          <Route path='/' element={<ProductComparison data={data} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/' element={<ProductComparison data={data} addToCart={addToCart} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
+          <Route path='/cart' element={<Cart selectedProducts={selectedProducts} />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/productdetail/:id' element={<ProductDetail data={data} />} />
         </Routes>

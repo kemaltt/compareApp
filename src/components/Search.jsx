@@ -43,7 +43,7 @@ export default function Search({
       <form onSubmit={getProduct} action="">
         <input
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter a product..."
+          placeholder="Search a product..."
           type="text"
           value={input}
         />

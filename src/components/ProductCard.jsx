@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BsCartPlus } from 'react-icons/bs'
+import { MdCompareArrows } from 'react-icons/md'
+import { MdOutlineCompareArrows } from 'react-icons/md'
 
 export default function ProductCard({
   product,
@@ -8,13 +11,24 @@ export default function ProductCard({
   id,
   selected,
   addToCompare,
+  addToCart,
   removeToCompare,
   isAuthenticated,
 }) {
   const [toggle, setToggle] = useState(false)
   const navigate = useNavigate()
+  const addCart = () => {
+    !isAuthenticated
+      ? alert('please log in before continuing')
+      : addToCart(product)
+  }
 
   const productDetail = () => {
+    navigate(
+      isAuthenticated
+        ? `/productdetail/${id}`
+        : alert('please log in before continuing'),
+    )
     setToggle(!toggle)
   }
 
@@ -24,68 +38,31 @@ export default function ProductCard({
       <div className="product_body">
         <h3>{product.title} </h3>
         <p>${product.price}</p>
-        {selected && selected.includes(product) ? (
-          <button
-            style={{
-              backgroundColor: 'red',
-              border: 'none',
-              padding: '10px 20px',
-              color: 'white',
-              borderRadius: '25px',
-              width: '100px',
-              margin: '4px',
-            }}
-            onClick={() =>
-              !isAuthenticated
-                ? alert('please log in before continuing')
-                : removeToCompare(product)
-            }
-          >
-            Remove
-          </button>
-        ) : (
-          <button
-            style={{
-              backgroundColor: 'yellowGreen',
-              border: 'none',
-              padding: '10px 20px',
-              color: 'white',
-              borderRadius: '25px',
-              width: '100px',
-              margin: '4px',
-            }}
-            onClick={() =>
-              !isAuthenticated
-                ? alert('please log in before continuing')
-                : addToCompare(product)
-            }
-          >
-            Compare
-          </button>
-        )}
-        <button
-          onClick={() =>
-            navigate(
-              isAuthenticated
-                ? `/productdetail/${id}`
-                : alert('please log in before continuing'),
-            )
-          }
-          style={{
-            backgroundColor: 'orange',
-            border: 'none',
-            padding: '10px 20px',
-            color: 'white',
-            borderRadius: '25px',
-            marginTop: '4px',
-            width: '100px',
-            margin: '4px',
-          }}
-        >
-          Detail
-        </button>
+
+        <div className="card_buttons">
+          {selected && selected.includes(product) ? (
+            <MdCompareArrows
+              onClick={() =>
+                !isAuthenticated
+                  ? alert('please log in before continuing')
+                  : removeToCompare(product)
+              }
+              style={{ fontSize: '3rem', color: 'red' }}
+            />
+          ) : (
+            <MdCompareArrows
+              onClick={() =>
+                !isAuthenticated
+                  ? alert('please log in before continuing')
+                  : addToCompare(product)
+              }
+              style={{ fontSize: '3rem', color: 'yellowgreen' }}
+            />
+          )}
+          <BsCartPlus onClick={addCart} style={{ fontSize: '3rem' }} />
+        </div>
       </div>
-      {toggle ? (
+      {/* {toggle ? (
         <div className="popup_container">
           <img
             style={{ width: '50%' }}
@@ -127,7 +104,7 @@ export default function ProductCard({
             x
           </button>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }
