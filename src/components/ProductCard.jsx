@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BsCartPlus } from 'react-icons/bs'
 import { MdCompareArrows } from 'react-icons/md'
-import { MdOutlineCompareArrows } from 'react-icons/md'
 
 export default function ProductCard({
   product,
