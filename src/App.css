@@ -192,6 +192,10 @@ td {
   padding: 0 1%;
 }
 
+.card_buttons svg {
+  font-size: 3rem;
+}
+
 .card_buttons svg:nth-of-type(2) {
   color: orange;
 }
@@ -332,8 +336,8 @@ td {
   }
 
   .product_card {
-    width: 170px;
-    height: 300px;
+    width: 150px;
+    height: 230px;
   }
 
   .product_card img {
@@ -349,6 +353,14 @@ td {
 
   .product_card p {
     margin: 0;
+  }
+
+  .product_card .price {
+    font-size: 1.2rem;
+  }
+
+  .card_buttons svg {
+    font-size: 2.2rem;
   }
 
   .compare_container {

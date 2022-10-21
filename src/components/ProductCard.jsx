@@ -36,7 +36,7 @@ export default function ProductCard({
       <img onClick={productDetail} src={product.image} alt={product.title} />
       <div className="product_body">
         <h3>{product.title} </h3>
-        <p>${product.price}</p>
+        <p className="price">${product.price}</p>
 
         <div className="card_buttons">
           {selected && selected.includes(product) ? (
@@ -46,7 +46,7 @@ export default function ProductCard({
                   ? alert('please log in before continuing')
                   : removeToCompare(product)
               }
-              style={{ fontSize: '3rem', color: 'red' }}
+              style={{ color: 'red' }}
             />
           ) : (
             <MdCompareArrows
@@ -55,10 +55,10 @@ export default function ProductCard({
                   ? alert('please log in before continuing')
                   : addToCompare(product)
               }
-              style={{ fontSize: '3rem', color: 'yellowgreen' }}
+              style={{ color: 'yellowgreen' }}
             />
           )}
-          <BsCartPlus onClick={addCart} style={{ fontSize: '3rem' }} />
+          <BsCartPlus onClick={addCart} />
         </div>
       </div>
       {/* {toggle ? (
