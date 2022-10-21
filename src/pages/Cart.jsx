@@ -1,7 +1,8 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
+import { RiDeleteBin6Fill } from 'react-icons/ri'
 
-export default function Contact({ selectedProducts }) {
+export default function Contact({ selectedProducts, setSelectedProducts }) {
   // const [quantity, setQuantity] = useState(1)
   // console.log(selectedProducts)
   let total = 0
@@ -11,11 +12,17 @@ export default function Contact({ selectedProducts }) {
   })
   totalAmount.map((el) => (total += el))
   const decreaseQuantity = () => {}
-
   const increaseQuantity = () => {}
 
+  const removeToProduct = (product) => {
+    setSelectedProducts([
+      ...selectedProducts.filter((el) => el.product_id !== product.product_id),
+    ])
+    console.log('delte')
+  }
+
   return (
-    <div className="cart" style={{ height: '76vh' }}>
+    <div className="cart">
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -24,6 +31,7 @@ export default function Contact({ selectedProducts }) {
             <th>Product title</th>
             <th>Quantity</th>
             <th>Amount</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +46,7 @@ export default function Contact({ selectedProducts }) {
                 />
               </td>
               <td>{product.title}</td>
-              <td style={{ textAlign: 'center' }}>
+              <td className="quantity_btn">
                 <button
                   onClick={decreaseQuantity}
                   style={{ background: 'red' }}
@@ -53,7 +61,13 @@ export default function Contact({ selectedProducts }) {
                   +
                 </button>
               </td>
-              <td>${product.price} </td>
+              <td>${product.price * product.count} </td>
+              <td style={{ textAlign: 'center' }}>
+                <RiDeleteBin6Fill
+                  onClick={() => removeToProduct(product)}
+                  style={{ color: 'red' }}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -63,7 +77,8 @@ export default function Contact({ selectedProducts }) {
             <th></th>
             <th></th>
             <th>Total amount</th>
-            <th>${total} </th>
+            <th>${total.toFixed(2)} </th>
+            <th></th>
           </tr>
         </thead>
       </Table>

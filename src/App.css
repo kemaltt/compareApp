@@ -182,7 +182,7 @@ td {
 
 .product_card img {
   width: 80%;
-  height: 28vh;
+  height: 180px;
 }
 
 .card_buttons {
@@ -242,8 +242,12 @@ td {
 
 .compare_container {
   display: flex;
-  width: 60%;
+  width: 80%;
   margin: 2vh auto;
+}
+
+.compare_container table th {
+  font-size: 1.5rem;
 }
 
 .footer_container {
@@ -264,7 +268,13 @@ td {
 
 .cart {
   width: 80%;
+  height: 100vh;
   margin: 5vh auto;
+}
+
+.cart .quantity_btn {
+  text-align: center;
+  min-width: 50px;
 }
 
 .cart button {
@@ -348,7 +358,7 @@ td {
 
   .product_card img {
     width: 80%;
-    height: 22vh;
+    height: 150px;
   }
 
   .product_card h3 {
@@ -365,16 +375,22 @@ td {
     font-size: 1.2rem;
   }
 
+  .card_buttons {
+    padding: 0 4%;
+  }
+
   .card_buttons svg {
     font-size: 2.2rem;
   }
 
   .compare_container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 80%;
+    gap: 5px;
+    width: 95%;
     margin: 2vh auto;
+  }
+
+  .compare_container table th {
+    font-size: 1rem;
   }
 
   .product_detail {
@@ -399,5 +415,14 @@ td {
     width: 80%;
   }
 
+  .cart {
+    width: 95%;
+    height: 100vh;
+    margin: 5vh auto;
+  }
 
+  .cart .quantity_btn {
+    text-align: center;
+    min-width: 100px;
+  }
 }
