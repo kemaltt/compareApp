@@ -43,7 +43,7 @@ export default function ProductCard({
             <MdCompareArrows
               onClick={() =>
                 !isAuthenticated
-                  ? alert('please log in before continuing')
+                  ? alert('please login before continuing')
                   : removeToCompare(product)
               }
               style={{ color: 'red' }}
@@ -52,7 +52,7 @@ export default function ProductCard({
             <MdCompareArrows
               onClick={() =>
                 !isAuthenticated
-                  ? alert('please log in before continuing')
+                  ? alert('please login before continuing')
                   : addToCompare(product)
               }
               style={{ color: 'yellowgreen' }}

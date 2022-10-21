@@ -332,12 +332,18 @@ td {
   }
 
   .products_container {
+
+    gap: 10px;
+
+  }
+
+  .products_container {
     padding: 2vh 1%;
   }
 
   .product_card {
     width: 150px;
-    height: 230px;
+    height: 240px;
   }
 
   .product_card img {
