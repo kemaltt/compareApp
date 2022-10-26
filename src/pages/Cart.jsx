@@ -8,7 +8,7 @@ export default function Contact({ selectedProducts, setSelectedProducts }) {
   let total = 0
 
   const totalAmount = selectedProducts.map((product) => {
-    return product.price
+    return product.price * product.count
   })
   totalAmount.map((el) => (total += el))
   const decreaseQuantity = () => {}
