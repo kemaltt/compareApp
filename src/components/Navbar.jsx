@@ -43,7 +43,13 @@ export default function Navbar({
                   <BsCartCheck style={{ fontSize: '3rem' }} />
                   {isAuthenticated ? (
                     <>
-                      <Badge bg="warning"> {badge} </Badge>
+                      <Badge
+                        style={{ position: 'relative', top: '-10px' }}
+                        bg="danger"
+                      >
+                        {' '}
+                        {badge}{' '}
+                      </Badge>
                       <span className="visually-hidden">unread messages</span>
                     </>
                   ) : null}
@@ -85,7 +91,16 @@ export default function Navbar({
             <li>
               <Link to="/cart">
                 <BsCartCheck style={{ fontSize: '3rem' }} />
-                <Badge bg="warning">{badge}</Badge>
+                <Badge
+                  style={{
+                    fontSize: '1rem',
+                    position: 'relative',
+                    top: '-10px',
+                  }}
+                  bg="danger"
+                >
+                  {badge}
+                </Badge>
                 <span className="visually-hidden">unread messages</span>
               </Link>
             </li>
