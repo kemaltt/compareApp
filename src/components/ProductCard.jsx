@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BsCartPlus } from 'react-icons/bs'
+import { BsCartCheckFill } from 'react-icons/bs'
 import { MdCompareArrows } from 'react-icons/md'
 
 export default function ProductCard({
@@ -10,12 +11,19 @@ export default function ProductCard({
   id,
   selected,
   addToCompare,
-  addToCart,
   removeToCompare,
+  addToCart,
+  removeToCart,
+  selectedProducts,
   isAuthenticated,
 }) {
   const [toggle, setToggle] = useState(false)
   const navigate = useNavigate()
+  const removeCart = () => {
+    !isAuthenticated
+      ? alert('please log in before continuing')
+      : removeToCart(product)
+  }
   const addCart = () => {
     !isAuthenticated
       ? alert('please log in before continuing')
@@ -58,7 +66,16 @@ export default function ProductCard({
               style={{ color: 'yellowgreen' }}
             />
           )}
-          <BsCartPlus onClick={addCart} />
+          <div className="cart_buttons">
+            {selectedProducts && selectedProducts.includes(product) ? (
+              <BsCartCheckFill
+                style={{ color: 'green' }}
+                onClick={removeCart}
+              />
+            ) : (
+              <BsCartPlus style={{ color: 'orange' }} onClick={addCart} />
+            )}
+          </div>
         </div>
       </div>
       {/* {toggle ? (

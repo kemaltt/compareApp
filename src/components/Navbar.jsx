@@ -47,8 +47,7 @@ export default function Navbar({
                         style={{ position: 'relative', top: '-10px' }}
                         bg="danger"
                       >
-                        {' '}
-                        {badge}{' '}
+                        {badge}
                       </Badge>
                       <span className="visually-hidden">unread messages</span>
                     </>

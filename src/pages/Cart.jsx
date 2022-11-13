@@ -14,11 +14,18 @@ export default function Contact({ selectedProducts, setSelectedProducts }) {
   const decreaseQuantity = () => {}
   const increaseQuantity = () => {}
 
+  //     if (selectedProducts.includes(product)) {
+
+  //     product.count++
+  //   } else {
+  //     product.count = 1
+  //     setSelectedProducts([...selectedProducts, product])
+  //   }
+
   const removeToProduct = (product) => {
     setSelectedProducts([
       ...selectedProducts.filter((el) => el.product_id !== product.product_id),
     ])
-    console.log('delte')
   }
 
   return (

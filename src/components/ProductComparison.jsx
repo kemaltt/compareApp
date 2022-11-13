@@ -9,6 +9,8 @@ export default function ProductComparison({
   isAuthenticated,
   isLoading,
   addToCart,
+  removeToCart,
+  selectedProducts,
 }) {
   const [selectedItems, setSelectedItems] = useState([])
   const [products, setProducts] = useState(data)
@@ -97,8 +99,10 @@ export default function ProductComparison({
             i={i}
             selected={selectedItems}
             addToCompare={addToCompare}
-            addToCart={addToCart}
             removeToCompare={removeToCompare}
+            addToCart={addToCart}
+            removeToCart={removeToCart}
+            selectedProducts={selectedProducts}
             isAuthenticated={isAuthenticated}
           />
         ))}
