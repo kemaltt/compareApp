@@ -18,17 +18,12 @@ function App() {
 
   const { loginWithRedirect, isAuthenticated, logout, isLoading, user } = useAuth0()
   const addToCart = (product) => {
-
-    // setSelectedProducts([...selectedProducts, product])
-    // product.count = 1
-
-    if (selectedProducts.includes(product)) {
-
-      product.count++
-    } else {
-      product.count = 1
-      setSelectedProducts([...selectedProducts, product])
-    }
+    setSelectedProducts([...selectedProducts, product])
+  }
+  const removeToCart = (product) => {
+    setSelectedProducts([
+      ...selectedProducts.filter((el) => el.product_id !== product.product_id),
+    ])
 
   }
 
@@ -38,7 +33,7 @@ function App() {
       <BrowserRouter>
         <Navbar selectedProducts={selectedProducts} isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} />
         <Routes>
-          <Route path='/' element={<ProductComparison data={data} addToCart={addToCart} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
+          <Route path='/' element={<ProductComparison data={data} selectedProducts={selectedProducts} addToCart={addToCart} removeToCart={removeToCart} isAuthenticated={isAuthenticated} isLoading={isLoading} />} />
           <Route path='/cart' element={<Cart selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts} />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/productdetail/:id' element={<ProductDetail data={data} />} />
