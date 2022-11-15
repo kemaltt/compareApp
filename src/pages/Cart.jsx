@@ -7,12 +7,25 @@ export default function Contact({ selectedProducts, setSelectedProducts }) {
   // console.log(selectedProducts)
   let total = 0
 
+  const decreaseQuantity = (product) => {
+    if (selectedProducts.includes(product)) {
+      if (product.count > 1) {
+        product.count--
+        setSelectedProducts([...selectedProducts])
+      }
+    }
+  }
+  const increaseQuantity = (product) => {
+    if (selectedProducts.includes(product)) {
+      product.count++
+      setSelectedProducts([...selectedProducts])
+    }
+  }
+
   const totalAmount = selectedProducts.map((product) => {
     return product.price * product.count
   })
   totalAmount.map((el) => (total += el))
-  const decreaseQuantity = () => {}
-  const increaseQuantity = () => {}
 
   //     if (selectedProducts.includes(product)) {
 
@@ -27,7 +40,7 @@ export default function Contact({ selectedProducts, setSelectedProducts }) {
       ...selectedProducts.filter((el) => el.product_id !== product.product_id),
     ])
   }
-
+  console.log(selectedProducts)
   return (
     <div className="cart">
       <Table striped bordered hover>
@@ -55,20 +68,20 @@ export default function Contact({ selectedProducts, setSelectedProducts }) {
               <td>{product.title}</td>
               <td className="quantity_btn">
                 <button
-                  onClick={decreaseQuantity}
+                  onClick={() => decreaseQuantity(product)}
                   style={{ background: 'red' }}
                 >
                   -
                 </button>
                 <span> {product.count} </span>
                 <button
-                  onClick={increaseQuantity}
+                  onClick={() => increaseQuantity(product)}
                   style={{ background: 'yellowgreen' }}
                 >
                   +
                 </button>
               </td>
-              <td>${product.price * product.count} </td>
+              <td>${(product.price * product.count).toFixed(2)} </td>
               <td style={{ textAlign: 'center' }}>
                 <RiDeleteBin6Fill
                   onClick={() => removeToProduct(product)}

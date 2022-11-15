@@ -18,7 +18,14 @@ function App() {
 
   const { loginWithRedirect, isAuthenticated, logout, isLoading, user } = useAuth0()
   const addToCart = (product) => {
-    setSelectedProducts([...selectedProducts, product])
+    if (selectedProducts.includes(product)) {
+
+      product.count++
+    } else {
+      product.count = 1
+      setSelectedProducts([...selectedProducts, product])
+    }
+    // setSelectedProducts([...selectedProducts, product])
   }
   const removeToCart = (product) => {
     setSelectedProducts([
@@ -26,8 +33,7 @@ function App() {
     ])
 
   }
-
-  console.log(selectedProducts);
+  console.log(selectedProducts)
   return (
     <div className="App" >
       <BrowserRouter>
