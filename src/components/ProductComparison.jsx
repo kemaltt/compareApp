@@ -1,8 +1,9 @@
-import React from 'react'
-import { useState } from 'react'
-import Loading from './Loading'
-import ProductCard from './ProductCard'
-import Search from './Search'
+import React from "react";
+import { useState } from "react";
+import Cart from "../components/Cart";
+import Loading from "./Loading";
+import ProductCard from "./ProductCard";
+import Search from "./Search";
 
 export default function ProductComparison({
   data,
@@ -12,39 +13,43 @@ export default function ProductComparison({
   removeToCart,
   selectedProducts,
 }) {
-  const [selectedItems, setSelectedItems] = useState([])
-  const [products, setProducts] = useState(data)
-  const [message, setMessage] = useState('')
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [products, setProducts] = useState(data);
+  const [message, setMessage] = useState("");
 
   const addToCompare = (product) => {
-    setSelectedItems([...selectedItems, product])
-  }
+    setSelectedItems([...selectedItems, product]);
+  };
   const removeToCompare = (product) => {
     setSelectedItems([
       ...selectedItems.filter((el) => el.product_id !== product.product_id),
-    ])
-  }
+    ]);
+  };
 
   return isLoading ? (
     <Loading />
   ) : (
     <div className="main">
+      <Cart
+        selectedProducts={selectedProducts}
+        isAuthenticated={isAuthenticated}
+      />
       <Search
         products={products}
         setProducts={setProducts}
         setMessage={setMessage}
         isAuthenticated={isAuthenticated}
       />
-      <p style={{ textAlign: 'center' }}> {message}</p>
+      <p style={{ textAlign: "center" }}> {message}</p>
 
       {selectedItems.length > 0 ? (
         <>
-          <h1 style={{ color: 'green', textAlign: 'center' }}>
+          <h1 style={{ color: "green", textAlign: "center" }}>
             Product comparison
           </h1>
 
           <div className="compare_container">
-            <div style={{ width: '20%', textAlign: 'left' }}>
+            <div style={{ width: "20%", textAlign: "left" }}>
               <h3>Title </h3>
               <h3>Price </h3>
               <h3>Category </h3>
@@ -52,11 +57,11 @@ export default function ProductComparison({
             </div>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                gap: '10px',
-                textAlign: 'left',
-                width: '80%',
+                display: "flex",
+                justifyContent: "flex-start",
+                gap: "10px",
+                textAlign: "left",
+                width: "80%",
               }}
             >
               {selectedItems.map((el, i) => (
@@ -72,12 +77,12 @@ export default function ProductComparison({
                   </tr>
                   <tr>
                     <td>
-                      {' '}
+                      {" "}
                       {[...Array(5)].map((star, i) => (
                         <i
                           style={{
-                            fontSize: '1.5rem',
-                            color: el.rating.rate >= i + 1 ? 'orange' : 'grey',
+                            fontSize: "1.5rem",
+                            color: el.rating.rate >= i + 1 ? "orange" : "grey",
                           }}
                           class="las la-star"
                         ></i>
@@ -108,5 +113,5 @@ export default function ProductComparison({
         ))}
       </div>
     </div>
-  )
+  );
 }

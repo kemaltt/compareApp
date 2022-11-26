@@ -19,7 +19,6 @@ h2 {
 h3 {
   font-size: 2rem;
   margin: 0;
-
 }
 
 p {
@@ -34,7 +33,6 @@ td {
   font-size: 1.8rem;
 }
 
-
 /* .App {
   height: 100vh;
 } */
@@ -43,10 +41,13 @@ td {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5vh 3%;
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%) !important;
+  padding: 0.5vh 3%;
+  background-image: linear-gradient(
+    260deg,
+    #2376ae 0%,
+    #c16ecf 100%
+  ) !important;
   color: white;
-
 }
 
 .navbar_ nav img {
@@ -55,14 +56,12 @@ td {
   border-radius: 10px;
 }
 
-
 .navbar_ nav .nav_item_desktop {
   display: block;
   list-style: none;
   display: flex;
   justify-content: space-around;
   margin: 0;
-
 }
 
 .navbar_ nav ul a {
@@ -71,7 +70,6 @@ td {
   color: white;
   font-size: 1.5rem;
   transition: all 0.3s;
-
 }
 
 /* .navbar nav ul a:active {
@@ -79,7 +77,6 @@ td {
   background-color: gray;
   border-radius: 10px;
 } */
-
 
 .navbar_ nav ul a:hover {
   transition: all 0.3s;
@@ -112,13 +109,10 @@ td {
   transition: all 0.4s linear;
 }
 
-
 .main {
   text-align: center;
   padding-bottom: 10vh;
-
 }
-
 
 .products_container {
   display: flex;
@@ -127,6 +121,7 @@ td {
   flex-wrap: wrap;
   gap: 20px;
   padding: 2vh 5%;
+  position: relative;
 }
 
 .product_detail {
@@ -137,7 +132,6 @@ td {
   text-align: center;
   padding: 3%;
   overflow: hidden;
-
 }
 
 .product_detail img {
@@ -252,7 +246,11 @@ td {
 
 .footer_container {
   text-align: center;
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%) !important;
+  background-image: linear-gradient(
+    260deg,
+    #2376ae 0%,
+    #c16ecf 100%
+  ) !important;
   color: white;
   padding: 2vh 0;
 }
@@ -281,12 +279,24 @@ td {
   width: 30px;
   border: none;
   color: white;
+}
 
+.cart_container {
+  position: fixed;
+  right: 3%;
+  top: 80%;
+  background-color: orange;
+  border-radius: 50%;
+  padding: 25px 15px;
+  z-index: 99999;
+  cursor: pointer;
+}
+.cart_container svg {
+  font-size: 5rem;
+  color: rgb(243, 233, 233);
 }
 
 @media only screen and (max-width: 600px) {
-
-
   .navbar_ nav .nav_item_desktop {
     display: none;
   }
@@ -299,10 +309,7 @@ td {
     display: block;
     /* transition: all 0.4s linear; */
     transition: right 0.4s ease;
-
   }
-
-
 
   .nav_item_mobile {
     list-style: none;
@@ -319,7 +326,6 @@ td {
 
   .nav_item_mobile li {
     border-bottom: 1px solid white;
-
   }
 
   .nav_item_mobile a {
@@ -328,14 +334,11 @@ td {
     font-size: 2rem;
     font-weight: bold;
     transition: all 0.4s linear;
-
   }
-
 
   .search_container form {
     width: 70%;
     margin: 4vh auto;
-
   }
 
   .search_container form button {
@@ -344,9 +347,7 @@ td {
   }
 
   .products_container {
-
     gap: 10px;
-
   }
 
   .products_container {
