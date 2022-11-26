@@ -18,9 +18,13 @@ export default function Cart({ selectedProducts, isAuthenticated }) {
       <FaCartArrowDown />
       <Badge
         style={{
-          fontSize: "1rem",
+          fontSize: "1.5rem",
           position: "relative",
-          top: "-10px",
+          top: "-40px",
+
+          width: "30px",
+          height: "30px",
+          borderRadius: "50%",
         }}
         bg="secondary"
       >
