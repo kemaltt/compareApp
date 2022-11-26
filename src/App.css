@@ -428,4 +428,8 @@ td {
     text-align: center;
     min-width: 100px;
   }
+
+  .cart_container {
+    display: none;
+  }
 }
